@@ -8,7 +8,7 @@ import ru.PioneerRusBase.BasePageObject;
 /**
  * Created by 1 on 27.05.2018.
  */
-public class MainPage extends BasePageObject<MainPage> {
+public class Header extends BasePageObject<Header> {
 
     private By headerLogInBtn = By.id("block-pioneer-header-blocks-header-login");
     private By headerFieldLogIn = By.id("edit-name");
@@ -16,8 +16,9 @@ public class MainPage extends BasePageObject<MainPage> {
     private By headerSubmitLogInForm = By.id("edit-submit--2");
     private By unvalidMailMessageLogInForm = By.xpath("(//div[@class='description'])[1]");
     private By unvalidPasswordMessageLogInForm = By.xpath("(//div[@class='description'])[2]");
+    private By headerLinkWhereToBuy = By.xpath("(//a[@href=\"/store-locator\"])[1]");
 
-    public MainPage(WebDriver driver, Logger log) {
+    public Header(WebDriver driver, Logger log) {
         super(driver, log);
     }
 
@@ -39,5 +40,8 @@ public class MainPage extends BasePageObject<MainPage> {
     }
 
 
-
+    public WhereToBuy clickHeaderLinkWhereToBuy() {
+        click(headerLinkWhereToBuy);
+        return new WhereToBuy(driver, log);
+    }
 }

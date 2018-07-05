@@ -3,12 +3,12 @@ package ru.PioneerRusRunTestClasses;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.PioneerRusBase.BaseTest;
-import ru.PioneerRusPagesLocators.MainPage;
+import ru.PioneerRusPagesLocators.Header;
 
 /**
  * Created by 1 on 27.05.2018.
  */
-public class LogIntoSystem extends BaseTest {
+public class LogInTest extends BaseTest {
 
     private String expectedUnvalidMailMessage = "Введите ваш e-mail.";
     private String expectedUnvalidPasswordMessage = "Введите пароль, который пришел Вам на e-mail.";
@@ -16,23 +16,23 @@ public class LogIntoSystem extends BaseTest {
 
     @Test(groups = {"disable test"})
     public void LogInFormUnvalidEmail() throws Exception {
-        MainPage mainPage = new MainPage(driver, log);
-        mainPage.clickLogInBtnHeader();
-        mainPage.enterDataLogInFormOnHeaderAndSubmit("", "2d");
-        Assert.assertTrue(expectedUnvalidMailMessage.equals(mainPage.getActualUnvalidMailMess()),
+        Header header = new Header(driver, log);
+        header.clickLogInBtnHeader();
+        header.enterDataLogInFormOnHeaderAndSubmit("", "2d");
+        Assert.assertTrue(expectedUnvalidMailMessage.equals(header.getActualUnvalidMailMess()),
                 "\nExpected message is: " + expectedUnvalidMailMessage + "\nActualMessage is: " +
-                        mainPage.getActualUnvalidMailMess());
+                        header.getActualUnvalidMailMess());
 
     }
 
     @Test
     public void LogInFormUnvalidPassword() throws Exception {
-        MainPage mainPage = new MainPage(driver, log);
-        mainPage.clickLogInBtnHeader();
-        mainPage.enterDataLogInFormOnHeaderAndSubmit("www@mail.com","");
-        Assert.assertTrue(expectedUnvalidPasswordMessage.equals(mainPage.getActualUnvalidPasswordMess()),
+        Header header = new Header(driver, log);
+        header.clickLogInBtnHeader();
+        header.enterDataLogInFormOnHeaderAndSubmit("www@mail.com","");
+        Assert.assertTrue(expectedUnvalidPasswordMessage.equals(header.getActualUnvalidPasswordMess()),
                 "\nExpected message is: " + expectedUnvalidPasswordMessage + "\nActualMessage is: " +
-                        mainPage.getActualUnvalidPasswordMess());
+                        header.getActualUnvalidPasswordMess());
 
     }
 }
